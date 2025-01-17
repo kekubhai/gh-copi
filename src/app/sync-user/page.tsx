@@ -1,13 +1,12 @@
 import { auth, clerkClient } from '@clerk/nextjs/server'
-import { error } from 'console';
 import { notFound, redirect } from 'next/navigation';
-import React from 'react'
-
+import { db } from '../server/db';
 const SyncUser = async() => {
     const {userId} =await auth();
     if(!userId){
         throw new Error("User is not signed In");
     }
+    
     const client =await clerkClient()
     const user =await client.users.getUser(userId)
     if(!user.emailAddresses){
@@ -19,17 +18,19 @@ const SyncUser = async() => {
     },
     update:{
         imageUrl:user.imageUrl,
-        firstName:user.firstName,
+        firtName:user.firstName,
         lastName:user.lastName,
     },
     create:{
 id:user.emailAddresses[0]?.emailAddress ?? "",
+emailAddress: user.emailAddresses[0]?.emailAddress ?? "",
+clerkId: user.id,
 imageUrl:user.imageUrl,
-firstName:user.firstName,
+firtName:user.firstName,
 lastName:user.lastName,
     },
  })
- return redirect('/dashboarrd');
+ return redirect('/dashboard');
 }
 
 
