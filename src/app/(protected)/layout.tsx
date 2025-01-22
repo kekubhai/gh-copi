@@ -14,7 +14,7 @@ const SidebarLayout = ({ children }: Props) => {
       <AppSidebar/> 
     <main className="w-full m-2">
       {/* Navbar */}
-      <div  className="flex items-center gap-2 border-sidebar bg-gray-800 p-4 text-white">
+      <div  className="flex items-center gap-2 border-sidebar shadow-lg rounded-md p-4 text-white">
         <div className="ml-auto">My App</div>
         <UserButton afterSignOutUrl="/" /> {/* Add the UserButton here */}
       </div>

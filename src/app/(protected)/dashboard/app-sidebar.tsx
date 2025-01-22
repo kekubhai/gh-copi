@@ -62,7 +62,7 @@ const projects =[
               <Link
                 href={item.url}
                 className={` ${
-                  isActive ? "bg-black text-white" : "text-gray-800 hover:bg-gray-200"
+                  isActive ? "bg-primary text-white" : "text-gray-800 hover:bg-gray-200"
                 }`}
                 >
                 <item.icon className={` ${isActive ? "text-white" : "text-gray-500"}`} />
@@ -97,15 +97,21 @@ const projects =[
     </SidebarMenuItem>
   );
 })}
+
 <div className="h-2">
 </div>
-<SidebarMenuItem></SidebarMenuItem>
+{open && (
+
+  <SidebarMenuItem>
+
 <Link href={'/create'}>
 <Button size={'sm'} variant={'outline'} className="w-fit shadow-sm border-amber-900">
 Create your Project
 <Plus/>
 </Button>
 </Link>
+  </SidebarMenuItem>
+)}
 </SidebarMenu>
             </SidebarContent>
         </SidebarGroup>
