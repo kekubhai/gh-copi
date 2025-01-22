@@ -8,7 +8,7 @@ const DashboardPage = () => {
     return <p>Loading...</p>; // Handle the loading state
   }
 
-  return <p></p>;
+  return <p className="text-wrap">{user.firstName}</p>;
 };
 
 export default DashboardPage;

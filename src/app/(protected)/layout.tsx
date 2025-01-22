@@ -1,6 +1,8 @@
 import React from 'react';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { UserButton } from '@clerk/nextjs'; // Import the UserButton from Clerk
+import { AppSidebar } from './dashboard/app-sidebar';
+
 
 type Props = {
   children: React.ReactNode;
@@ -8,20 +10,23 @@ type Props = {
 
 const SidebarLayout = ({ children }: Props) => {
   return (
-    <div className="flex flex-col h-screen">
+    <SidebarProvider>
+      <AppSidebar/> 
+    <main className="w-full m-2">
       {/* Navbar */}
-      <nav className="flex items-center justify-between bg-gray-800 p-4 text-white">
-        <div className="text-xl font-bold">My App</div>
+      <div  className="flex items-center gap-2 border-sidebar bg-gray-800 p-4 text-white">
+        <div className="ml-auto">My App</div>
         <UserButton afterSignOutUrl="/" /> {/* Add the UserButton here */}
-      </nav>
+      </div>
 
       {/* Content */}
-      <div className="flex flex-grow">
-        <SidebarProvider>
-          <main className="flex flex-grow items-center p-4">{children}</main>
-        </SidebarProvider>
+      <div className="h-4">
+        <>
+          <main className="border-sidebar-border bg-sidebar border m-4 p-4">{children}</main>
+        </>
       </div>
-    </div>
+    </main>
+    </SidebarProvider>
   );
 };
 
