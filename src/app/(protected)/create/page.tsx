@@ -1,7 +1,7 @@
 
 
-import api  from '@trpc/react'
-import { useForm } from 'react-hook-form';
+import {api } from '../../../trpc/react'
+import {  useFormContext } from 'react-hook-form';
 import React from 'react';
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
@@ -15,7 +15,7 @@ const CreatePage = () => {
     githubToken?: string;
   };
 const createProject=api.project.createProject.useMutaion()
-  const { register, handleSubmit, reset } = useForm<FormInput>();
+  const { register, handleSubmit, reset } = useFormContext<FormInput>();
 
   function onSubmit(data: FormInput) {
     window.alert(JSON.stringify(data, null, 2));
