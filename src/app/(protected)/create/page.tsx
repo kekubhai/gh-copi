@@ -1,6 +1,6 @@
 
 
-import trpc  from '@trpc/react-query'
+import api  from '@trpc/react'
 import { useForm } from 'react-hook-form';
 import React from 'react';
 import Image from 'next/image';
@@ -14,7 +14,7 @@ const CreatePage = () => {
     project: string;
     githubToken?: string;
   };
-const createProject=trpc.project.createProject.usemMutation()
+const createProject=api.project.createProject.useMutaion()
   const { register, handleSubmit, reset } = useForm<FormInput>();
 
   function onSubmit(data: FormInput) {
